@@ -112,14 +112,5 @@ do
     echo
 done
 
-for file in $DIR/index-pattern/*.json
-do
-    name=`grep -oP '"title": "\K[A-Z0-9a-z_#\-*]*' $file`
-    echo "Loading index pattern $name:"
-
-    $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/index-pattern/$name \
-        -d @$file || exit 1
-    echo
-done
 
 
